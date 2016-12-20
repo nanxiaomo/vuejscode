@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ｖ-for语句</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+	     <h2>索引$index</h2>
+		<ul>
+			<li v-for="item in items">
+    			{{ parentMessage }} - {{ $index }} - {{ item.message }}
+  			</li>
+		</ul>
+		<hr>
+		<h2>索引指定一个别名</h2>
+		<ul>
+			<li v-for="(index, item) in items">{{index}}-{{item.message}}</li>
+		</ul>
+		<!--注意此处是()-->
+		<hr>
+		<h2>采用of</h2>
+		<ul>
+			<li v-for="item of items">{{item.message}}</li>
+		</ul>
+
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				parentMessage: 'Parent',
+				items:[{
+					message:"hello"
+				},{message:"how are you?"
+			}]
+			}
+		})
+	</script>
+</body>
+</html>
