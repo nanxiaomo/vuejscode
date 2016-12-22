@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>值域-v-for</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-for="n in 10">{{n}}</div>
+		<!--此时它将重复模板数次,从0开始，小于该数-->
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</body>
+</html>
