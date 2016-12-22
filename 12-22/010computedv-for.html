@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Computed 方法由于过滤</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="item in filter1">{{item}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				items:[{
+					mes:"wangfei"
+				},{
+					mes:"lan"
+				},{
+					mes:"fangi"
+				},{
+					mes:"hangfei"
+				}]
+			},
+			computed:{
+				filter1:function () {
+					/* body... */
+					self =this;
+					var arr =[];
+					for(var i=0,l=self.items.length; i<l;i++){
+						var strleg =self.items[i].mes.length;
+						if(strleg >=5){
+							arr.push(self.items[i].mes);
+						}
+					}
+					return arr;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
