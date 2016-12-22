@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for中的问题</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for ="(index, item) in items">{{index}}-{{item.mes}}</li>
+			<!--注意此处是()-->
+		</ul>
+		<div class="data-show">
+			{{$data | json}}
+		</div>
+		<button @click = "f1">vm.items[0] ={mes:"wang"}</button>
+		<button @click = "f2">vm.items.$set(0,{mes:"liu"});</button>
+		<button @click = "f3">vm.items.length =0;</button>
+		<button @click = "f4">vm.items ={}</button>
+	</div>
+
+	<script type="text/javascript">
+		var vm =new Vue ({
+			el:"#app",
+			data:{
+				items:[{
+					mes:"hello"
+				},{
+					mes:"wangfei"
+				},{
+					mes:"tag"
+				}]
+			},
+			methods:{
+				f1: function () {
+					/* body... */
+					vm.items[0] ={mes:"wang"}
+				},
+				f2: function () {
+					/* body... */
+					vm.items.$set(0,{mes:"liu"});
+				},
+				f3: function () {
+					/* body... */
+					vm.items.length =0;
+				},
+				f4: function () {
+					/* body... */
+					vm.items ={}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
