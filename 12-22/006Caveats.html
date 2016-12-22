@@ -8,8 +8,13 @@
 <body>
 	<div id="app">
 		<ul>
-			<li v-for ="(index, item) in items">{{index}}-{{item.mes}}</li>
+			<li v-for ="(index, item) in items">
+			{{index}}-{{item.mes}}
+			<button @click = "f5(item)">this.items.splice(index, 1)</button>
+			<button @click = "f6(item)">this.items.$remove(item)</button>
+			</li>
 			<!--注意此处是()-->
+
 		</ul>
 		<div class="data-show">
 			{{$data | json}}
@@ -48,6 +53,18 @@
 				f4: function () {
 					/* body... */
 					vm.items ={}
+				},
+				f5: function (item) {
+					/* body... */
+					var index = this.items.indexOf(item);
+					if (index !== -1){
+						/*此处为！==*/
+						this.items.splice(index, 1)
+					}
+				},
+				f6: function (item) {
+					/* body... */
+					this.items.$remove(item)
 				}
 			}
 		})
